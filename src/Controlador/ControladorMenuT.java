@@ -1,9 +1,14 @@
+package Controlador;
+
+import Modelo.MenuTienda;
+import Vista.VistaMenu;
+
 import java.util.ArrayList;
 
 public class ControladorMenuT {
     private ArrayList<MenuTienda> menuTList;
-    private VistaMenu vista; //Atributo de tipo VistaMenu
-    private MenuTienda menu1; //Atributo de tipo MenuTienda
+    private VistaMenu vista; //Atributo de tipo Vista.VistaMenu
+    private MenuTienda menu1; //Atributo de tipo Modelo.MenuTienda
 
     ControladorMenuT(VistaMenu vista){
         menuTList =  new ArrayList<MenuTienda>();
@@ -20,7 +25,7 @@ public class ControladorMenuT {
 
 
 
-    public Integer buscarProducto(String codigo){
+    public int buscarProducto(String codigo){
             for (int i = 0; i < menuTList.size(); i++) {
                 String newcodigo = menuTList.get(i).getCodigo();
 

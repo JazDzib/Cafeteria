@@ -1,10 +1,14 @@
+package Vista;
+
+import Modelo.MenuTienda;
+import Modelo.Registro;
+
 import java.util.ArrayList;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class VistaMenu {
+public class VistaMenu extends Registro {
 
     Scanner lectura = new Scanner(System.in);
 
@@ -25,7 +29,7 @@ public class VistaMenu {
     }//Método que solicita Producto
 
 
-        public Integer SolicitarPrecio () {
+        public double SolicitarPrecio () {
             boolean entrada2 = true;
             while (true){
 
@@ -49,27 +53,6 @@ public class VistaMenu {
 
 
 
-   /*try {
-        System.out.println("Enter a number");
-        scan.nextInt();
-    } catch (InputMismatchException e) {
-        e.printStackTrace();
-    }*/
-
-
-    /*  try {
-                System.out.print("Introduce un número entero: ");
-                String entrada = scanner.nextLine();
-                numero = Integer.parseInt(entrada); // Intenta convertir la entrada en un entero
-
-                // Si llegamos a este punto, la conversión fue exitosa y la entrada es un entero válido
-                entradaValida = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada no válida. Debes ingresar un número entero.");
-            }
-        } */
-
-
     public String SolicitarDescripcion(){
         System.out.println("Escr. Descripcion del Producto ");
         lectura = new Scanner(System.in);
@@ -82,13 +65,13 @@ public class VistaMenu {
         menuprod.forEach(System.out::println);
     }////Método que imprime los elementos del ArrayList
 
-    public Integer Menu(){
+    public int Menu(){
         lectura = new Scanner(System.in);
         System.out.println("======Menú=====");
         System.out.println("1-Agregar Producto al menu");
         System.out.println("2-Borrar Producto ");
         System.out.println("3-Modificar Menu");
-        System.out.println("4-Desplegar lista");
+            System.out.println("4-Desplegar lista");
         System.out.println("5-Salir");
         System.out.println("Opción: ");
         return lectura.nextInt();
@@ -123,7 +106,7 @@ public class VistaMenu {
             prodNOEncontado();
     }//Método que imprime los productos
 
-    public Integer MenuModificarMenu(){
+    public int MenuModificarMenu(){
         lectura = new Scanner(System.in);
         //lectura.useDelimiter("\n");
         System.out.println("===Menú modificación===");

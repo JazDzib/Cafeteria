@@ -1,3 +1,5 @@
+package Modelo;
+
 import java.util.ArrayList;
 
 public class MenuTienda {
@@ -5,13 +7,13 @@ public class MenuTienda {
     private String codigo;
     private String categoria;
     private String producto;
-    private Integer precio;
+    private double precio;
 
     private String descripcion;
  
 
     
-    public MenuTienda(String codigo, String categoria, String producto, Integer precio, String descripcion) {
+    public MenuTienda(String codigo, String categoria, String producto, double precio, String descripcion) {
         this.codigo = codigo;
         this.categoria = categoria;
         this.producto = producto;
@@ -19,7 +21,7 @@ public class MenuTienda {
         this.descripcion= descripcion;
     }//Contructor
 
-    public MenuTienda(String codigo, String categoria, String producto, Integer precio) {
+    public MenuTienda(String codigo, String categoria, String producto, double precio) {
     }//Constructor
 
     //Getter and Setters
@@ -47,11 +49,11 @@ public class MenuTienda {
         this.producto = producto;
     }
 
-    public Integer getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Integer precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -67,7 +69,7 @@ public class MenuTienda {
 
     @Override
     public String toString() {
-        return "MenuTienda{" +
+        return "Modelo.MenuTienda{" +
                 "codigo='" + codigo + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", producto='" + producto + '\'' +

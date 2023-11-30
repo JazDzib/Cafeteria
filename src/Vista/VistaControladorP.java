@@ -1,3 +1,5 @@
+package Vista;
+
 import java.util.Scanner;
 
 public class VistaControladorP {
@@ -7,7 +9,7 @@ public class VistaControladorP {
         System.out.println("Menú");
         System.out.println("1- Menu Tienda ");
         System.out.println("2- Registro de Pedido ");
-        System.out.println("3- Almacen ");
+        System.out.println("3- Modelo.Almacen ");
         System.out.println("4- Registro de Ventas");
         System.out.println("5- Clientes");
         System.out.println("6- Mesas y sillas");

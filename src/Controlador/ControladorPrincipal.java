@@ -1,3 +1,9 @@
+package Controlador;
+
+import Controlador.ControladorMenuT;
+import Vista.VistaControladorP;
+import Vista.VistaMenu;
+
 public class ControladorPrincipal {
 
     private VistaMenu vistamenu;

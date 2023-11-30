@@ -1,3 +1,8 @@
+package Controlador;
+
+import Controlador.ControladorPrincipal;
+import Vista.VistaControladorP;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
@@ -5,10 +10,6 @@ public class Main {
         VistaControladorP vistacontroladorP = new VistaControladorP();
         ControladorPrincipal sistema   = new ControladorPrincipal(vistacontroladorP);
         sistema.MenuPrincipal();
-
-
-
-
 
 
     }
