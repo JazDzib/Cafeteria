@@ -25,6 +25,12 @@ public class ControladorMenuT implements Buscador {
         this.menuTList = menuTList;
     }
 
+    public void iniciardatos (){
+
+       menuTList= Percistencia.cargarMenu("Menu.txt");
+
+    }
+
     @Override
     public int buscar(String codigo) {
         for (int i = 0; i < menuTList.size(); i++) {

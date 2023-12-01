@@ -11,11 +11,6 @@ import java.util.Scanner;
 
 public class VistaMenu {
 
-    private ControladorPrincipal cotroladorP;
-    private ArrayList<MenuTienda> menuTList;
-
-
-
     Scanner lectura = new Scanner(System.in);
 
     public String SolicitarCodigo(){

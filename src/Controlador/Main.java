@@ -9,7 +9,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
         VistaControladorP vistacontroladorP = new VistaControladorP();
         ControladorPrincipal sistema   = new ControladorPrincipal(vistacontroladorP);
+        sistema.obtenerControladorMenu().iniciardatos();
         sistema.MenuPrincipal();
+
+
+
 
 
     }

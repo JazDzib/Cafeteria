@@ -26,6 +26,7 @@ public class ControladorPrincipal {
 
     }
 
+
     public Percistencia obtenerPersistencia(){
         return persistenciaA;
     }
