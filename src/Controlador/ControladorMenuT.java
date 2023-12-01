@@ -1,47 +1,61 @@
 package Controlador;
 
+import Modelo.Buscador;
 import Modelo.MenuTienda;
+import Modelo.Percistencia;
 import Vista.VistaMenu;
 
 import java.util.ArrayList;
 
-public class ControladorMenuT {
+public class ControladorMenuT implements Buscador {
     private ArrayList<MenuTienda> menuTList;
     private VistaMenu vista; //Atributo de tipo Vista.VistaMenu
     private MenuTienda menu1; //Atributo de tipo Modelo.MenuTienda
 
     ControladorMenuT(VistaMenu vista){
-        menuTList =  new ArrayList<MenuTienda>();
+        menuTList =  new ArrayList<>();
         this.vista=vista;
     }//Constructor
-    public void addProductoT() throws Exception {
+
+    public ArrayList<MenuTienda> getMenuTList() {
+        return menuTList;
+    }
+
+    public void setMenuTList(ArrayList<MenuTienda> menuTList) {
+        this.menuTList = menuTList;
+    }
+
+    @Override
+    public int buscar(String codigo) {
+        for (int i = 0; i < menuTList.size(); i++) {
+            String newcodigo = menuTList.get(i).getCodigo();
+
+            if (codigo.equals(menuTList.get(i).getCodigo())) {
+                System.out.println(i);
+                return i;
+            }//
+        }
+        return -1;//Código de producto no encotrado
+
+    }
+
+
+    public void agregarMenu() throws Exception {
         menu1 = new MenuTienda(vista.SolicitarCodigo(),
                 vista.SolicitarCategria(),
                 vista.SolicitarProducto(),
                 vista.SolicitarPrecio(),
                 vista.SolicitarDescripcion());
         menuTList.add(menu1);
+        Percistencia.guardarMenu(menuTList,"Menu.txt");
+
     } //Método agregar productos
 
 
 
-    public int buscarProducto(String codigo){
-            for (int i = 0; i < menuTList.size(); i++) {
-                String newcodigo = menuTList.get(i).getCodigo();
 
-                if (codigo.equals(menuTList.get(i).getCodigo())) {
-                    System.out.println(i);
-                    return i;
-                }//
-            }
-        return -1;//Código de producto no encotrado
-
-    } //Método que buscas el codigo del producto
-
-
-
-        public boolean eliminarProducto (String codigo){
-            int compara = buscarProducto(codigo);
+    public boolean eliminarMenu (String codigo){
+            int compara = buscar(codigo);
             if (compara != -1) {
                 menuTList.remove(compara);//elimina el producto del Array
                 return true;
@@ -49,12 +63,12 @@ public class ControladorMenuT {
 
                 return false;
             }
-        }//Metodo para eliminar productos
+    }//Metodo para eliminar productos
 
 
 
     public void modificarMenu(String codigo) throws Exception {
-       int  compara = buscarProducto(codigo);
+       int  compara = buscar(codigo);
         if(compara != -1 ) {
             vista.imprimirInfoProd(menuTList.get(compara));
             Integer opcion = 0;
@@ -98,11 +112,11 @@ public class ControladorMenuT {
         while(opcion != 5){
             switch (vista.Menu()){
                 case 1:
-                    addProductoT();
+                    agregarMenu();
                     break;
                 case 2:
                     String  indice = vista.SolicitarCodigo();
-                    vista.imprimeInfoBorrado(eliminarProducto(indice));
+                    vista.imprimeInfoBorrado(eliminarMenu(indice));
 
                     break;
                 case 3:
@@ -120,6 +134,7 @@ public class ControladorMenuT {
             } //fin del switch
         } //fin del while
     } //fin de Menu de Tienda
+
 
 
 }

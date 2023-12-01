@@ -1,14 +1,20 @@
 package Vista;
 
+import Controlador.ControladorPrincipal;
 import Modelo.MenuTienda;
-import Modelo.Registro;
+import Modelo.Percistencia;
 
 import java.util.ArrayList;
 
 import java.util.Scanner;
 
 
-public class VistaMenu extends Registro {
+public class VistaMenu {
+
+    private ControladorPrincipal cotroladorP;
+    private ArrayList<MenuTienda> menuTList;
+
+
 
     Scanner lectura = new Scanner(System.in);
 
@@ -37,12 +43,13 @@ public class VistaMenu extends Registro {
                     System.out.println("Escr. Precio");
                     lectura = new Scanner(System.in);
                     String entrada = lectura.nextLine();
-                    int numero = Integer.parseInt(entrada);
+                    double numero;
+                    numero = Double.parseDouble(entrada);
                     return numero;
 
 
                 } catch (NumberFormatException e) {
-                    System.out.println("Entrada no válida. Debes ingresar un número entero.");
+                    System.out.println("Entrada no válida. Debes ingresar un número tipo double.");
 
                 }
 
@@ -60,9 +67,10 @@ public class VistaMenu extends Registro {
     }//Método que solicita Descripción
 
 
-    public void imprimirInfoTotal(ArrayList<MenuTienda> menuprod){
+    public void imprimirInfoTotal(ArrayList<MenuTienda>menuTList){
+    Percistencia.cargarMenu("Menu.txt");
+        menuTList.forEach(System.out::println);
 
-        menuprod.forEach(System.out::println);
     }////Método que imprime los elementos del ArrayList
 
     public int Menu(){

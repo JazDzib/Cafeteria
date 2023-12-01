@@ -1,8 +1,9 @@
 package Modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MenuTienda {
+public class MenuTienda implements Serializable {
 
     private String codigo;
     private String categoria;

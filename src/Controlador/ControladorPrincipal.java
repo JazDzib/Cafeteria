@@ -1,34 +1,46 @@
 package Controlador;
 
 import Controlador.ControladorMenuT;
+import Modelo.MenuTienda;
 import Vista.VistaControladorP;
 import Vista.VistaMenu;
+import Modelo.Percistencia;
+
+import java.util.ArrayList;
 
 public class ControladorPrincipal {
 
     private VistaMenu vistamenu;
-    private ControladorMenuT menut;
+    private ControladorMenuT controlMenu;
 
     private VistaControladorP vistacontroladorP;
+
+    private Percistencia persistenciaA;
 
     public ControladorPrincipal(VistaControladorP vistacontroladorP) {
 
         vistamenu = new VistaMenu();
-        menut = new ControladorMenuT(vistamenu);
-
+        controlMenu = new ControladorMenuT(vistamenu);
+        persistenciaA = new Percistencia();
         this.vistacontroladorP = vistacontroladorP;
 
-
-
-
     }
+
+    public Percistencia obtenerPersistencia(){
+        return persistenciaA;
+    }
+
+    public ControladorMenuT obtenerControladorMenu(){
+        return controlMenu;
+    }
+
 
     public void MenuPrincipal() throws Exception {
         Integer opcion=0;
         while(opcion != 9){
             switch (vistacontroladorP.Menu()){
                 case 1:
-                    menut.MenuDELaTienda();
+                    controlMenu.MenuDELaTienda();
                     break;
                 case 2:
 
