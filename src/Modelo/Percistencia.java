@@ -12,30 +12,6 @@ import java.io.ObjectOutputStream;
 public class Percistencia {
 
 
-  /*static ArrayList<Clientes> clientesList = new ArrayList<Clientes>();
-     public void guardarClientes(ArrayList<MenuTienda> listClientes){
-        try{
-            ObjectOutputStream escribe = new ObjectOutputStream(new FileOutputStream("cliente.txt"));
-            escribe.writeObject(listClientes);
-            System.out.println("Se han guardado correctamente los clientes");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public static ArrayList<Clientes> cargarClientes(){
-        try{
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("cliente.txt"));
-            ArrayList<Clientes> agregarlista = (ArrayList<Clientes>) ois.readObject();
-            clientesList.addAll(agregarlista);
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        return clientesList;
-    }*/
-
 
         public static void guardarMenu(ArrayList<MenuTienda> menuTlist, String nombreArchivo) {
             try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(nombreArchivo))) {

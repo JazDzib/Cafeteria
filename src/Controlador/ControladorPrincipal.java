@@ -3,7 +3,7 @@ package Controlador;
 import Controlador.ControladorMenuT;
 import Modelo.MenuTienda;
 
-import Vista.MenuRegistroP;
+import Vista.MenuRegistro;
 import Vista.VistaControladorP;
 import Vista.VistaMenu;
 import Modelo.Percistencia;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ControladorPrincipal {
 
-    private VistaMenu vistamenu;
+
 
     private ControladorMenuT controlMenu;
     private Percistencia persistenciaA;
@@ -28,21 +28,19 @@ public class ControladorPrincipal {
         controlVentas = new ControladorVentas();
 
 
-    }
+        }
+        public Percistencia obtenerPersistencia(){
+            return persistenciaA;
+        }
 
+        public ControladorMenuT obtenerControladorMenu(){
+            return controlMenu;
+        }
 
-    public Percistencia obtenerPersistencia(){
-        return persistenciaA;
-    }
+        public ControladorAlmacen obtenerControladorAlmacen(){return controlAlmacen; }
 
-    public ControladorMenuT obtenerControladorMenu(){
-        return controlMenu;
-    }
-
-    public ControladorAlmacen obtenerControladorAlmacen(){return controlAlmacen; }
-
-    public ControladorClientes obtenerControladorClientes(){return controlClientes;}
-    public ControladorVentas obtenerControladorVentas(){return controlVentas;}
+        public ControladorClientes obtenerControladorClientes(){return controlClientes;}
+        public ControladorVentas obtenerControladorVentas(){return controlVentas;}
 
 
     /*public void MenuPrincipal() throws Exception {

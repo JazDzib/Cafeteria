@@ -6,10 +6,11 @@ import Modelo.Percistencia;
 
 import Vista.VistaMenu;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class ControladorMenuT implements Buscador {
-
     private ArrayList<MenuTienda>menuTList;
 
 
@@ -36,6 +37,22 @@ public class ControladorMenuT implements Buscador {
         return -1;//Código de producto no encotrado
 
     }
+    public void iniciardatos (){
+
+        menuTList= Percistencia.cargarMenu("ListaMenu.txt");
+
+    }
+    public void actualizarTablaPlatillos(JTable TablaInventario1, ArrayList<MenuTienda> menuTList) {
+        DefaultTableModel tablaMenu = (DefaultTableModel) TablaInventario1.getModel();
+        tablaMenu.setRowCount(0);
+        iniciardatos();
+
+        for (MenuTienda prodmenu : menuTList ) {
+
+            tablaMenu.addRow(new Object[]{prodmenu.getCodigo(),prodmenu.getCategoria(),prodmenu.getProducto(),prodmenu.getPrecio(),prodmenu.getDescripcion()});
+        }
+    }
+
     /*private ArrayList<MenuTienda> menuTList;
     private VistaMenu vista; //Atributo de tipo Vista.VistaMenu
     private MenuRegistro MeRegistro;
@@ -98,78 +115,10 @@ public class ControladorMenuT implements Buscador {
 
                 return false;
             }
-    }//Metodo para eliminar productos
+    }//Metodo para eliminar productos*/
 
 
 
-    public void modificarMenu(String codigo) throws Exception {
-       int  compara = buscar(codigo);
-        if(compara != -1 ) {
-            vista.imprimirInfoProd(menuTList.get(compara));
-            Integer opcion = 0;
-            while (opcion != 5) {
-                switch (vista.MenuModificarMenu()) {
-                    case 1:
-
-                        vista.imprimirInfoProd(menuTList.get(compara));
-                        menuTList.get(compara).setCategoria(vista.SolicitarCategria());
-
-                        break;
-                    case 2:
-
-                        vista.imprimirInfoProd(menuTList.get(compara));
-                        menuTList.get(compara).setProducto(vista.SolicitarProducto());
-
-                        break;
-                    case 3:
-
-                        vista.imprimirInfoProd(menuTList.get(compara));
-                        menuTList.get(compara).setPrecio(vista.SolicitarPrecio());
-
-                        break;
-                    case 4:
-
-                        vista.imprimirInfoProd(menuTList.get(compara));
-                        menuTList.get(compara).setDescripcion(vista.SolicitarDescripcion());
-
-                        break;
-                    case 5:
-                        opcion = 5;
-                        break;
-                }//fin switch
-            }//llave final del while
-        }//llave final del if
-    }//Método para modificar los atributos
-
-
-    public void MenuDELaTienda() throws Exception {
-        Integer opcion=0; ;
-        while(opcion != 5){
-            switch (vista.Menu()){
-                case 1:
-                    agregarMenu();
-                    break;
-                case 2:
-                    String  indice = vista.SolicitarCodigo();
-                    vista.imprimeInfoBorrado(eliminarMenu(indice));
-
-                    break;
-                case 3:
-                   vista.SolicitarCodigo();
-                    modificarMenu(menu1.getCodigo());
-
-                    break;
-                case 4:
-                    vista.imprimirInfoTotal(menuTList);
-
-                    break;
-                case 5:
-                    opcion = 5;
-                    break;
-            } //fin del switch
-        } //fin del while
-    } //fin de Menu de Tienda
-*/
 
 
 }

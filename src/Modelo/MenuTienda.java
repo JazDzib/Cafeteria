@@ -8,13 +8,13 @@ public class MenuTienda implements Serializable {
     private String codigo;
     private String categoria;
     private String producto;
-    private double precio;
+    private String precio;
 
     private String descripcion;
  
 
     
-    public MenuTienda(String codigo, String categoria, String producto, double precio, String descripcion) {
+    public MenuTienda(String codigo, String categoria, String producto, String precio, String descripcion) {
         this.codigo = codigo;
         this.categoria = categoria;
         this.producto = producto;
@@ -22,7 +22,7 @@ public class MenuTienda implements Serializable {
         this.descripcion= descripcion;
     }//Contructor
 
-    public MenuTienda(String codigo, String categoria, String producto, double precio) {
+    public MenuTienda(String codigo, String categoria, String producto, String precio) {
     }//Constructor
 
     //Getter and Setters
@@ -50,11 +50,11 @@ public class MenuTienda implements Serializable {
         this.producto = producto;
     }
 
-    public double getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 

@@ -20,7 +20,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     public PrimeraPantalla(ControladorPrincipal controladorG) {
         initComponents();
         this.controladorG = controladorG;
-        setTitle("Cocina Economica");
+
 
 
     }
@@ -161,7 +161,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActionPerformed
-        MenuRegistroP menuregistroC = new MenuRegistroP(controladorG);
+        MenuRegistro menuregistroC = new MenuRegistro(controladorG);
         muestra(menuregistroC); // TODO add your handling code here:
     }//GEN-LAST:event_MenuActionPerformed
 
