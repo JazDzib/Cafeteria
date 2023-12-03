@@ -3,18 +3,47 @@ package Controlador;
 import Modelo.Buscador;
 import Modelo.MenuTienda;
 import Modelo.Percistencia;
+
 import Vista.VistaMenu;
 
 import java.util.ArrayList;
 
 public class ControladorMenuT implements Buscador {
-    private ArrayList<MenuTienda> menuTList;
+
+    private ArrayList<MenuTienda>menuTList;
+
+
+    public ControladorMenuT() {
+        menuTList = new  ArrayList<>();
+    }
+    public void setMenuTList(ArrayList<MenuTienda> menuTList) {
+        this.menuTList = menuTList;
+    }
+    public ArrayList<MenuTienda> getMenuTList() {
+        return menuTList;
+    }
+
+    @Override
+    public int buscar(String codigo) {
+        for (int i = 0; i < menuTList.size(); i++) {
+            String newcodigo = menuTList.get(i).getCodigo();
+
+            if (codigo.equals(menuTList.get(i).getCodigo())) {
+                System.out.println(i);
+                return i;
+            }//
+        }
+        return -1;//Código de producto no encotrado
+
+    }
+    /*private ArrayList<MenuTienda> menuTList;
     private VistaMenu vista; //Atributo de tipo Vista.VistaMenu
+    private MenuRegistro MeRegistro;
     private MenuTienda menu1; //Atributo de tipo Modelo.MenuTienda
 
-    ControladorMenuT(VistaMenu vista){
+    ControladorMenuT(){
         menuTList =  new ArrayList<>();
-        this.vista=vista;
+        this.MeRegistro=MeRegistro;
     }//Constructor
 
     public ArrayList<MenuTienda> getMenuTList() {
@@ -140,7 +169,7 @@ public class ControladorMenuT implements Buscador {
             } //fin del switch
         } //fin del while
     } //fin de Menu de Tienda
-
+*/
 
 
 }

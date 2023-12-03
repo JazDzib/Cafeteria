@@ -6,10 +6,12 @@ public class RegistroVentas {
     private String fecha;
      private int precio;
      private int prodVend;
+     private  String nombreC;
 
-    public RegistroVentas(String id, String fecha, int precio, int prodVend) {
+    public RegistroVentas(String id, String fecha, String nombreC, int precio, int prodVend) {
         this.codigo= id;
         this.fecha = fecha;
+        this.nombreC = nombreC;
         this.precio = precio;
         this.prodVend = prodVend;
     }
@@ -46,13 +48,22 @@ public class RegistroVentas {
         this.prodVend = prodVend;
     }
 
+    public String getNombreC() {
+        return nombreC;
+    }
+
+    public void setNombreC(String nombreC) {
+        this.nombreC = nombreC;
+    }
+
     @Override
     public String toString() {
         return "RegistroVentas{" +
-                "id='" + codigo + '\'' +
+                "codigo='" + codigo + '\'' +
                 ", fecha='" + fecha + '\'' +
                 ", precio=" + precio +
                 ", prodVend=" + prodVend +
+                ", nombreC='" + nombreC + '\'' +
                 '}';
     }
 }

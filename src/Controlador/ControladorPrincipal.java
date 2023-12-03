@@ -2,6 +2,8 @@ package Controlador;
 
 import Controlador.ControladorMenuT;
 import Modelo.MenuTienda;
+
+import Vista.MenuRegistroP;
 import Vista.VistaControladorP;
 import Vista.VistaMenu;
 import Modelo.Percistencia;
@@ -11,18 +13,16 @@ import java.util.ArrayList;
 public class ControladorPrincipal {
 
     private VistaMenu vistamenu;
+    private MenuRegistroP guiMenuRegistro;
     private ControladorMenuT controlMenu;
 
     private VistaControladorP vistacontroladorP;
 
     private Percistencia persistenciaA;
 
-    public ControladorPrincipal(VistaControladorP vistacontroladorP) {
-
-        vistamenu = new VistaMenu();
-        controlMenu = new ControladorMenuT(vistamenu);
+    public ControladorPrincipal() {
+        controlMenu = new ControladorMenuT();
         persistenciaA = new Percistencia();
-        this.vistacontroladorP = vistacontroladorP;
 
     }
 
@@ -36,7 +36,7 @@ public class ControladorPrincipal {
     }
 
 
-    public void MenuPrincipal() throws Exception {
+    /*public void MenuPrincipal() throws Exception {
         Integer opcion=0;
         while(opcion != 9){
             switch (vistacontroladorP.Menu()){
@@ -72,5 +72,5 @@ public class ControladorPrincipal {
 
             } //fin del switch
         } //fin del while
-    }
+    }*/
 }
