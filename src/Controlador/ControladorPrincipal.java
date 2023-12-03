@@ -13,16 +13,20 @@ import java.util.ArrayList;
 public class ControladorPrincipal {
 
     private VistaMenu vistamenu;
-    private MenuRegistroP guiMenuRegistro;
+
     private ControladorMenuT controlMenu;
-
-    private VistaControladorP vistacontroladorP;
-
     private Percistencia persistenciaA;
+    private ControladorAlmacen controlAlmacen;
+    private ControladorClientes controlClientes;
+    private ControladorVentas controlVentas;
 
     public ControladorPrincipal() {
         controlMenu = new ControladorMenuT();
         persistenciaA = new Percistencia();
+        controlAlmacen = new ControladorAlmacen();
+        controlClientes = new ControladorClientes();
+        controlVentas = new ControladorVentas();
+
 
     }
 
@@ -34,6 +38,11 @@ public class ControladorPrincipal {
     public ControladorMenuT obtenerControladorMenu(){
         return controlMenu;
     }
+
+    public ControladorAlmacen obtenerControladorAlmacen(){return controlAlmacen; }
+
+    public ControladorClientes obtenerControladorClientes(){return controlClientes;}
+    public ControladorVentas obtenerControladorVentas(){return controlVentas;}
 
 
     /*public void MenuPrincipal() throws Exception {

@@ -4,17 +4,22 @@
  */
 package Vista;
 
+import Controlador.ControladorPrincipal;
+
 /**
  *
  * @author Jazmin Dzib
  */
-public class PerfilesRegistroP extends javax.swing.JPanel {
+public class PerfilesRegistroP extends javax.swing.JPanel { //Clase de registro de Clientes
+    private ControladorPrincipal controladorG;
 
     /**
      * Creates new form PerfilesRegistroP
      */
-    public PerfilesRegistroP() {
+    public PerfilesRegistroP(ControladorPrincipal controladorG) {
         initComponents();
+        this.controladorG = controladorG;
+        controladorG.obtenerControladorClientes();
     }
 
     /**

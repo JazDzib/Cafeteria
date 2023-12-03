@@ -4,17 +4,21 @@
  */
 package Vista;
 
+import Controlador.ControladorPrincipal;
+
 /**
  *
  * @author Jazmin Dzib
  */
 public class VentasRegistroP extends javax.swing.JPanel {
-
+    private ControladorPrincipal controladorG;
     /**
      * Creates new form VentasRegistroP
      */
-    public VentasRegistroP() {
+    public VentasRegistroP(ControladorPrincipal controladorG) {
         initComponents();
+        this.controladorG = controladorG;
+        controladorG.obtenerControladorVentas();
     }
 
     /**

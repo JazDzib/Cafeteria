@@ -161,8 +161,8 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActionPerformed
-        MenuRegistroP gestionclientes = new MenuRegistroP(controladorG);
-        muestra(gestionclientes); // TODO add your handling code here:
+        MenuRegistroP menuregistroC = new MenuRegistroP(controladorG);
+        muestra(menuregistroC); // TODO add your handling code here:
     }//GEN-LAST:event_MenuActionPerformed
 
     private void PedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidoActionPerformed
@@ -170,15 +170,18 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_PedidoActionPerformed
 
     private void AlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlmacenActionPerformed
-        // TODO add your handling code here:
+       IngredientesRegistroP almacenC = new IngredientesRegistroP(controladorG);
+       muestra(almacenC);// TODO add your handling code here:
     }//GEN-LAST:event_AlmacenActionPerformed
 
     private void VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentasActionPerformed
-        // TODO add your handling code here:
+        VentasRegistroP ventasregistroC = new VentasRegistroP(controladorG);
+        muestra(ventasregistroC);// TODO add your handling code here:
     }//GEN-LAST:event_VentasActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
-        // TODO add your handling code here:
+        PerfilesRegistroP clientesRegistroC = new PerfilesRegistroP(controladorG);
+        muestra(clientesRegistroC);// TODO add your handling code here:
     }//GEN-LAST:event_ClientesActionPerformed
 
     private void TicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TicketActionPerformed

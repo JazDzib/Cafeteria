@@ -4,11 +4,14 @@
  */
 package Vista;
 
+import Controlador.ControladorPrincipal;
+
 /**
  *
  * @author Jazmin Dzib
  */
 public class RegistroDatosC extends javax.swing.JPanel {
+    private ControladorPrincipal controladorG;
 
     /**
      * Creates new form RegistroDatosC
