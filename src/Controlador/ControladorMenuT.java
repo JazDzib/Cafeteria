@@ -4,14 +4,13 @@ import Modelo.Buscador;
 import Modelo.MenuTienda;
 import Modelo.Percistencia;
 
-import Vista.VistaMenu;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorMenuT implements Buscador {
-    private ArrayList<MenuTienda>menuTList;
+ private ArrayList<MenuTienda>menuTList;
 
 
     public ControladorMenuT() {
@@ -26,33 +25,59 @@ public class ControladorMenuT implements Buscador {
 
     @Override
     public int buscar(String codigo) {
-        for (int i = 0; i < menuTList.size(); i++) {
+       /* for (int i = 0; i < menuTList.size(); i++) {
             String newcodigo = menuTList.get(i).getCodigo();
 
             if (codigo.equals(menuTList.get(i).getCodigo())) {
                 System.out.println(i);
                 return i;
             }//
-        }
+        }*/
         return -1;//Código de producto no encotrado
 
     }
     public void iniciardatos (){
 
-       Percistencia.guardarMenu(menuTList,"ListaMenu.txt");
+        menuTList= Percistencia.cargarMenu("Menu.txt");
+
     }
     public void actualizarTablaPlatillos(JTable TablaInventario1, ArrayList<MenuTienda> menuTList) {
         DefaultTableModel tablaMenu = (DefaultTableModel) TablaInventario1.getModel();
         tablaMenu.setRowCount(0);
-        iniciardatos();
 
         for (MenuTienda prodmenu : menuTList ) {
 
             tablaMenu.addRow(new Object[]{prodmenu.getCodigo(),prodmenu.getCategoria(),prodmenu.getProducto(),prodmenu.getPrecio(),prodmenu.getDescripcion()});
         }
+        }
+    
+    public void editarMenu(DefaultTableModel tablaMenu, JTable TablaInventario1, ArrayList<MenuTienda> menuTList){
+        int selectedRow = TablaInventario1.getSelectedRow();
+    
+    String newCodigo = tablaMenu.getValueAt(selectedRow,0).toString();
+    String newCategoria = tablaMenu.getValueAt(selectedRow,1).toString();
+   String newProducto = tablaMenu.getValueAt(selectedRow,2).toString();
+    String newPrecio = tablaMenu.getValueAt(selectedRow,3).toString();
+   String newDescripcion = tablaMenu.getValueAt(selectedRow,4).toString();
+    
+        MenuTienda menuactu = menuTList.get(selectedRow);  
+        menuactu.setCodigo(newCodigo);
+        menuactu.setCategoria(newCategoria);
+        menuactu.setProducto(newProducto);
+        menuactu.setPrecio(newPrecio);
+        menuactu.setDescripcion(newDescripcion);
+        
+        Percistencia.guardarMenu(menuTList, "Menu.txt");
     }
-
-   /* private ArrayList<MenuTienda> menuTList;
+    public void eliminarPlato(ArrayList<MenuTienda> menuTlist, String codigo) {
+        for (int i = 0; i < menuTList.size(); i++) {
+            if (menuTList.get(i).getCodigo().equals(codigo)) {
+                menuTList.remove(i);
+                break;
+            }
+        }
+    }
+    /*private ArrayList<MenuTienda> menuTList;
     private VistaMenu vista; //Atributo de tipo Vista.VistaMenu
     private MenuRegistro MeRegistro;
     private MenuTienda menu1; //Atributo de tipo Modelo.MenuTienda
@@ -115,8 +140,6 @@ public class ControladorMenuT implements Buscador {
                 return false;
             }
     }//Metodo para eliminar productos*/
-
-
 
 
 

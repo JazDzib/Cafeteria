@@ -8,6 +8,7 @@ import Controlador.ControladorPrincipal;
 import Modelo.MenuTienda;
 import Modelo.Percistencia;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +25,6 @@ public class MenuRegistro extends javax.swing.JPanel {
      * Creates new form MRbueno
      */
     public MenuRegistro(ControladorPrincipal controladorG) {
-        menuTList =new ArrayList<>();
       this.controladorG = controladorG;
         initComponents();
         controladorG.obtenerControladorMenu();
@@ -32,10 +32,31 @@ public class MenuRegistro extends javax.swing.JPanel {
         tablaMenu.setColumnIdentifiers(ids);
         TablaInventario1.setModel(tablaMenu);
 
-      //  this.menuTList = Percistencia.cargarMenu("ListaMenu.txt");
+        this.menuTList = Percistencia.cargarMenu("Menu.txt");
         controladorG.obtenerControladorMenu().actualizarTablaPlatillos(TablaInventario1,menuTList);
     }
 
+    void actualizarMenu(){
+        int i;
+        for(i=1;i<5;i++){
+            int row = TablaInventario1.getSelectedRow();
+            String infoingrediente = TablaInventario1.getModel().getValueAt(row, i).toString();
+            switch (i) { 
+                case 1 -> AddPlatilloID1.setText(infoingrediente);
+                case 2 -> AddPlatilloCategoria1.setText(infoingrediente);
+                case 3 -> AddPlatilloNombre1.setText(infoingrediente);
+                case 4 -> AddPlatilloPrecio1.setText(infoingrediente);
+                case 5 -> AddPlatilloDescripcion1.setText(infoingrediente);
+            }
+       }
+
+        int fila=TablaInventario1.getSelectedRow();
+        tablaMenu.setValueAt(AddPlatilloID1.getText(), fila, 0);
+        tablaMenu.setValueAt(AddPlatilloCategoria1.getText(), fila, 1);
+       tablaMenu.setValueAt(AddPlatilloNombre1.getText(), fila, 2);
+        tablaMenu.setValueAt(AddPlatilloPrecio1.getText(), fila, 3);
+        tablaMenu.setValueAt(AddPlatilloDescripcion1.getText(), fila, 4);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -117,7 +138,6 @@ public class MenuRegistro extends javax.swing.JPanel {
         ));
         TablaInventario1.setToolTipText("");
         TablaInventario1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        TablaInventario1.setColumnSelectionAllowed(true);
         TablaInventario1.setShowHorizontalLines(true);
         TablaInventario1.setShowVerticalLines(true);
         TablaInventario1.getTableHeader().setResizingAllowed(false);
@@ -195,16 +215,17 @@ public class MenuRegistro extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ANADIRPLATILLO1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addComponent(AddPlatilloID1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(AddPlatilloCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AddPlatilloNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(AddPlatilloPrecio1, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                        .addGap(28, 28, 28)
+                        .addComponent(AddPlatilloPrecio1)
+                        .addGap(18, 18, 18)
                         .addComponent(AddPlatilloDescripcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46))
+                        .addGap(29, 29, 29))
                     .addComponent(jSeparator4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 54, Short.MAX_VALUE)
@@ -217,15 +238,16 @@ public class MenuRegistro extends javax.swing.JPanel {
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(16, 16, 16))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(BotonAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(255, 255, 255))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(REGScrollInventario1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(REGBEliminarPlatillo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(REGBEditarPlatillo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(66, 66, 66))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(274, Short.MAX_VALUE)
+                .addComponent(BotonAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(252, 252, 252))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,21 +268,16 @@ public class MenuRegistro extends javax.swing.JPanel {
                     .addComponent(REGScrollInventario1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ANADIRPLATILLO1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AddPlatilloCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddPlatilloNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddPlatilloID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddPlatilloPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AddPlatilloDescripcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddPlatilloCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddPlatilloNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddPlatilloID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddPlatilloPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddPlatilloDescripcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(BotonAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -307,7 +324,25 @@ public class MenuRegistro extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void REGBEliminarPlatillo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGBEliminarPlatillo1ActionPerformed
-        // TODO add your handling code here:
+ DefaultTableModel tblModel = (DefaultTableModel)TablaInventario1.getModel();
+        
+        if(TablaInventario1.getSelectedRowCount() == 1){
+             String menuplato = tablaMenu.getValueAt(TablaInventario1.getSelectedRow(), 0).toString();
+            tblModel.removeRow(TablaInventario1.getSelectedRow());
+            controladorG.obtenerControladorMenu().eliminarPlato(menuTList, menuplato);
+            
+            
+            Percistencia.guardarMenu(menuTList, "Menu.txt");
+            
+            
+            
+        }else{
+            if(TablaInventario1.getRowCount()==0){
+                JOptionPane.showMessageDialog(this, "Table is Empty.");
+            }else{
+                JOptionPane.showMessageDialog(this, "PLEASE SELESCT sINGLE rOW FOR DELETE.");
+            }
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_REGBEliminarPlatillo1ActionPerformed
 
     private void AddPlatilloDescripcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPlatilloDescripcion1ActionPerformed
@@ -319,7 +354,8 @@ public class MenuRegistro extends javax.swing.JPanel {
     }//GEN-LAST:event_REGBEditarPlatillo1MouseEntered
 
     private void REGBEditarPlatillo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGBEditarPlatillo1ActionPerformed
-        // TODO add your handling code here:
+    controladorG.obtenerControladorMenu().editarMenu((DefaultTableModel)TablaInventario1.getModel(), TablaInventario1, menuTList);
+        ///TODO add your handling code here:
     }//GEN-LAST:event_REGBEditarPlatillo1ActionPerformed
 
     private void AddPlatilloPrecio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPlatilloPrecio1ActionPerformed
@@ -332,6 +368,16 @@ public class MenuRegistro extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+        
+/*TablaInventario1 Tablainventario=new TablaInventario1();
+        for (int i = 0; i < Tablainventario.selectRow(); i++) {
+            String newcodigo = Tablainventario.get(i).getRow();
+
+            if (equals(Tablainventario.get(i).getRow())) {
+                TablaInventario1.setRowSelectionInterval(0,1);
+                return i;
+            }//
+        }
         /* TablaInventario Tablainventario=new TablaInventario();
         for (int i = 0; i < Tablainventario.selectRow(); i++) {
             String newcodigo = Tablainventario.get(i).getRow();
@@ -352,8 +398,8 @@ public class MenuRegistro extends javax.swing.JPanel {
     AddPlatilloPrecio1.setText("");
     AddPlatilloDescripcion1.setText("");
     menuTList.add(prodmenu);
-    Percistencia.guardarMenu(menuTList,"ListaMenu.txt");
-    tablaMenu.addRow(new Object[]{"",prodmenu.getCodigo(),prodmenu.getCategoria(),prodmenu.getProducto(),prodmenu.getPrecio(),prodmenu.getDescripcion()
+    Percistencia.guardarMenu(menuTList,"Menu.txt");
+    tablaMenu.addRow(new Object[]{prodmenu.getCodigo(),prodmenu.getCategoria(),prodmenu.getProducto(),prodmenu.getPrecio(),prodmenu.getDescripcion()
         }); // TODO add your handling code here:
     }//GEN-LAST:event_BotonAñadirActionPerformed
 

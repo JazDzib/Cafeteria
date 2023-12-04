@@ -14,8 +14,6 @@ public class ControladorGui {
         pantallaPrincipal = new PrimeraPantalla(controladorPrincipal);
         registromenu = new MenuRegistro(controladorPrincipal);
 
-
-
     }
 
     public void iniciar() {
