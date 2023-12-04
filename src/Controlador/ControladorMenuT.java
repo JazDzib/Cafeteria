@@ -39,8 +39,7 @@ public class ControladorMenuT implements Buscador {
     }
     public void iniciardatos (){
 
-        menuTList= Percistencia.cargarMenu("ListaMenu.txt");
-
+       Percistencia.guardarMenu(menuTList,"ListaMenu.txt");
     }
     public void actualizarTablaPlatillos(JTable TablaInventario1, ArrayList<MenuTienda> menuTList) {
         DefaultTableModel tablaMenu = (DefaultTableModel) TablaInventario1.getModel();
@@ -53,7 +52,7 @@ public class ControladorMenuT implements Buscador {
         }
     }
 
-    /*private ArrayList<MenuTienda> menuTList;
+   /* private ArrayList<MenuTienda> menuTList;
     private VistaMenu vista; //Atributo de tipo Vista.VistaMenu
     private MenuRegistro MeRegistro;
     private MenuTienda menu1; //Atributo de tipo Modelo.MenuTienda
